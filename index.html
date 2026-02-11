@@ -3,59 +3,184 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>정보보호 포트폴리오 | 김기령</title>
-  <meta name="description" content="Metasploit 기반 침투 테스트 및 패킷 분석 최종보고서(PDF) 포트폴리오 페이지" />
-  <style>
-    :root { color-scheme: light; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.6; background: #fff; color: #111; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 40px 16px 56px; }
-    h1 { font-size: 28px; margin: 0 0 8px; letter-spacing: -0.02em; }
-    .sub { margin: 0 0 20px; color: #444; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
-    @media (min-width: 920px) { .grid { grid-template-columns: 360px 1fr; } }
-    .card { border: 1px solid #e6e6e6; border-radius: 12px; padding: 16px; box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
-    h2 { font-size: 16px; margin: 0 0 10px; }
-    ul { margin: 0; padding-left: 18px; }
-    li { margin: 6px 0; }
-    .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    a.btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 12px; border-radius: 10px; border: 1px solid #d9d9d9; text-decoration: none; color: #111; background: #fafafa; }
-    a.btn:hover { background: #f3f3f3; }
-    .note { margin-top: 10px; font-size: 12px; color: #666; }
-    .viewer { border: 1px solid #e6e6e6; border-radius: 12px; overflow: hidden; background: #fff; }
-    iframe { width: 100%; height: min(80vh, 900px); border: 0; }
-    footer { margin-top: 18px; font-size: 12px; color: #777; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.95em; }
-  </style>
+  <title>Metasploit 기반 취약점 재현 및 탐지 포인트 도출</title>
+  <meta name="description" content="Metasploit 기반 취약점 재현 결과와 Packet/Log Evidence를 통해 탐지 포인트를 도출한 침투 테스트 포트폴리오." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Metasploit 기반 취약점 재현 및 탐지 포인트 도출" />
+  <meta property="og:description" content="핵심 증빙 6장과 최종 보고서 PDF를 통해 결과-근거-탐지 포인트를 한 페이지에서 확인할 수 있습니다." />
+  <meta property="og:image" content="img/fig_6-16.png" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <main class="wrap">
-    <h1>정보보호 포트폴리오</h1>
-    <p class="sub">Metasploit 기반 침투 테스트 및 패킷 분석 최종보고서(PDF)입니다. 실습·교육 목적의 허가된 환경에서 수행한 내용을 정리했습니다.</p>
+  <a class="skip-link" href="#main-content">본문으로 바로 이동</a>
 
-    <div class="grid">
-      <section class="card">
-        <h2>핵심 요약</h2>
-        <ul>
-          <li>주제: Metasploit을 활용한 침투 테스트 및 패킷 분석</li>
-          <li>범위: 공격 흐름(절차), 관측 포인트(트래픽/패킷), 결과 정리 및 시사점</li>
-          <li>산출물: 최종보고서 PDF 1부</li>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top">Pen-Testing Portfolio</a>
+      <nav aria-label="주요 섹션">
+        <ul class="site-nav">
+          <li><a href="#paper">Paper</a></li>
+          <li><a href="#evidence">Evidence</a></li>
+          <li><a href="#findings">Findings</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="btns">
-          <a class="btn" href="Pen_Testing.pdf" target="_blank" rel="noreferrer">PDF 새 창으로 보기</a>
-          <a class="btn" href="Pen_Testing.pdf" download>PDF 다운로드</a>
-        </div>
-        <div class="note">
-          뷰어가 브라우저 정책/확장 프로그램 영향으로 보이지 않으면, 위 버튼으로 열람 가능합니다.
-        </div>
-        <footer>
-          문의/링크 추가가 필요하면 이 페이지에 GitHub, 블로그, 연락처 등을 확장할 수 있습니다.
-        </footer>
-      </section>
-
-      <section class="viewer" aria-label="PDF Viewer">
-        <iframe src="Pen_Testing.pdf#view=FitH" title="정보보호 포트폴리오 PDF"></iframe>
-      </section>
+      </nav>
     </div>
+  </header>
+
+  <main id="main-content">
+    <section id="top" class="hero section">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal d1">
+          <p class="eyebrow">Security Engineering Portfolio</p>
+          <h1>Metasploit 기반 취약점 재현 및 탐지 포인트 도출</h1>
+          <p class="hero-summary">
+            가상화 실습 환경에서 취약점 경로를 재현하고 Packet/Log Evidence로 탐지 포인트를 도출했습니다.
+            채용관이 빠르게 판단할 수 있도록 스냅샷 지표와 원문 미리보기를 분리해, 근거 확인 흐름이 즉시 읽히도록 구성했습니다.
+          </p>
+          <ul class="hero-points">
+            <li>실습 환경: VirtualBox 기반 이중 VM(공격자/대상)</li>
+            <li>분석 대상: 레거시 취약 서비스 + 사용자 실행형 경로</li>
+            <li>결과 전달: 핵심 증빙 -> Findings -> 최종 보고서 PDF</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="Pen_Testing.pdf" target="_blank" rel="noopener noreferrer">최종 보고서 PDF 열기</a>
+            <a class="btn btn-ghost" href="Pen_Testing.pdf" download>최종 보고서 다운로드</a>
+            <a class="btn btn-link" href="#evidence">핵심 증빙 바로 보기</a>
+          </div>
+        </div>
+
+        <section id="paper" class="paper-panel reveal d2" aria-label="최종 보고서 미리보기">
+          <div class="paper-head">
+            <p class="section-kicker">Paper Preview</p>
+            <h2>최종 보고서 미리보기</h2>
+            <p>핵심 장면 확인 후 바로 원문 맥락을 점검할 수 있도록 메인 화면에 배치했습니다.</p>
+          </div>
+          <div id="paper-viewer-wrap" class="pdf-shell pdf-shell-hero">
+            <iframe id="paper-viewer" title="Pen_Testing 최종 보고서 PDF 뷰어" src="Pen_Testing.pdf#view=FitH" loading="eager"></iframe>
+          </div>
+          <div class="paper-actions">
+            <button id="toggle-viewer-btn" class="btn btn-link" type="button" aria-pressed="false" aria-controls="paper-viewer-wrap">미리보기 확대</button>
+          </div>
+        </section>
+
+        <aside class="snapshot-panel reveal d3" aria-label="프로젝트 요약 지표">
+          <h2>Snapshot</h2>
+          <ul class="metric-list">
+            <li><strong>6</strong><span>핵심 증빙 이미지</span></li>
+            <li><strong>3</strong><span>핵심 Finding 요약</span></li>
+            <li><strong>44</strong><span>전체 증빙 이미지</span></li>
+            <li><strong>24.49MB</strong><span>최종 보고서 PDF</span></li>
+          </ul>
+          <p class="panel-note">교육 목적의 허가된 실습 범위에서 수행된 결과만 공개합니다.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="evidence" class="section section-muted">
+      <div class="shell reveal d4">
+        <div class="section-head">
+          <p class="section-kicker">Evidence</p>
+          <h2>핵심 실험 근거 (Evidence Highlights)</h2>
+          <p>탐지 포인트 도출에 직접 연결되는 대표 장면만 엄선해 제시합니다.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="evidence-card">
+            <img src="img/fig_6-16.png" alt="핵심 증빙 1: 권한 승격 후 시스템 장악 근거 화면" width="1269" height="797" loading="lazy" />
+            <figcaption>핵심 1. 권한 승격 후 시스템 장악 <a href="img/fig_6-16.png" target="_blank" rel="noopener noreferrer">원본</a></figcaption>
+          </figure>
+          <figure class="evidence-card">
+            <img src="img/fig_4-1.png" alt="핵심 증빙 2: 바인드쉘 경로 시각화 이미지" width="1576" height="512" loading="lazy" />
+            <figcaption>핵심 2. 바인드쉘 경로 시각화 <a href="img/fig_4-1.png" target="_blank" rel="noopener noreferrer">원본</a></figcaption>
+          </figure>
+          <figure class="evidence-card">
+            <img src="img/fig_5-2.png" alt="핵심 증빙 3: 리버스쉘 경로 시각화 이미지" width="1576" height="512" loading="lazy" />
+            <figcaption>핵심 3. 리버스쉘 경로 시각화 <a href="img/fig_5-2.png" target="_blank" rel="noopener noreferrer">원본</a></figcaption>
+          </figure>
+          <figure class="evidence-card">
+            <img src="img/fig_7-1.png" alt="핵심 증빙 4: 서버 측 경로 패킷 흐름 근거" width="1510" height="379" loading="lazy" />
+            <figcaption>핵심 4. 서버 측 경로 패킷 흐름 근거 <a href="img/fig_7-1.png" target="_blank" rel="noopener noreferrer">원본</a></figcaption>
+          </figure>
+          <figure class="evidence-card">
+            <img src="img/fig_7-2.png" alt="핵심 증빙 5: 시나리오 A 패킷 캡처 근거" width="1515" height="522" loading="lazy" />
+            <figcaption>핵심 5. 시나리오 A 패킷 캡처 근거 <a href="img/fig_7-2.png" target="_blank" rel="noopener noreferrer">원본</a></figcaption>
+          </figure>
+          <figure class="evidence-card">
+            <img src="img/fig_7-3.png" alt="핵심 증빙 6: 시나리오 B 역방향 콜백 패킷 근거" width="1503" height="435" loading="lazy" />
+            <figcaption>핵심 6. 시나리오 B 역방향 콜백 근거 <a href="img/fig_7-3.png" target="_blank" rel="noopener noreferrer">원본</a></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="findings" class="section">
+      <div class="shell reveal d5">
+        <div class="section-head">
+          <p class="section-kicker">Findings</p>
+          <h2>핵심 분석 결과</h2>
+        </div>
+        <div class="finding-grid">
+          <article class="finding-card">
+            <h3>F-01 레거시 FTP 서비스 노출</h3>
+            <p>서버 측 경로에서 세션 성립이 확인된 고위험 항목으로, 취약 서비스 제거와 접근 원천 제한이 우선 과제입니다.</p>
+            <p class="chip-row"><span>CWE-912</span><span>CVSS v3.1 9.8</span><span>High</span><span>Open</span></p>
+            <p class="finding-evidence">근거: <a href="img/fig_7-1.png" target="_blank" rel="noopener noreferrer">IMG-001</a>, <a href="img/fig_7-2.png" target="_blank" rel="noopener noreferrer">IMG-002</a></p>
+          </article>
+          <article class="finding-card">
+            <h3>F-02 사용자 실행형 파일 통제 미흡</h3>
+            <p>사용자 실행 전제에서 역방향 세션이 성립되어, 파일 실행 통제 및 최소 권한 운영 강화가 필요합니다.</p>
+            <p class="chip-row"><span>CWE-494</span><span>CVSS v3.1 8.1</span><span>High</span><span>Open</span></p>
+            <p class="finding-evidence">근거: <a href="img/fig_6-16.png" target="_blank" rel="noopener noreferrer">IMG-016</a></p>
+          </article>
+          <article class="finding-card">
+            <h3>F-03 이그레스 통제 부재</h3>
+            <p>비인가 콜백 트래픽 가능성이 관측되어, 아웃바운드 필터링 및 예외 승인 절차 분리가 필요한 상태입니다.</p>
+            <p class="chip-row"><span>CWE-284</span><span>CVSS v3.1 6.5</span><span>Medium</span><span>Planned</span></p>
+            <p class="finding-evidence">근거: <a href="img/fig_7-3.png" target="_blank" rel="noopener noreferrer">IMG-003</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="section section-muted">
+      <div class="shell reveal d6">
+        <div class="section-head">
+          <p class="section-kicker">Method</p>
+          <h2>수행 프레임워크</h2>
+          <p>재현 가능한 절차와 근거 추적을 위해 아래 순서로 테스트를 설계하고 수행했습니다.</p>
+        </div>
+        <ol class="step-list">
+          <li>
+            <h3>준비 및 범위 정의</h3>
+            <p>허가 범위, 실습 조건, 테스트 목표를 사전에 고정해 범위 이탈을 방지합니다.</p>
+          </li>
+          <li>
+            <h3>취약 경로 재현</h3>
+            <p>레거시 서비스 경로와 사용자 실행형 경로를 분리해 각각의 성립 조건을 검증합니다.</p>
+          </li>
+          <li>
+            <h3>Packet/Log 증거 확보</h3>
+            <p>패킷 캡처와 실행 로그를 연결해 탐지 관점에서 재해석 가능한 Evidence를 구성합니다.</p>
+          </li>
+          <li>
+            <h3>리스크 우선순위화</h3>
+            <p>Finding별 CWE/CVSS 기준으로 개선 우선순위를 정하고 후속 재검증 계획을 수립합니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
   </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="shell footer-inner">
+      <p>교육/실습 목적의 허가된 범위에서 수행한 결과만 공개합니다.</p>
+      <p>Contact: rlarlfud0903@naver.com</p>
+    </div>
+  </footer>
 </body>
 </html>
