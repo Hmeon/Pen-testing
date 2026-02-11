@@ -1,6 +1,12 @@
 (() => {
   const toggleViewerButton = document.getElementById("toggle-viewer-btn");
   const viewerWrap = document.getElementById("paper-viewer-wrap");
+  const setScrollState = () => {
+    document.body.classList.toggle("is-scrolled", window.scrollY > 10);
+  };
+
+  setScrollState();
+  window.addEventListener("scroll", setScrollState, { passive: true });
 
   if (!toggleViewerButton || !viewerWrap) {
     return;

@@ -11,13 +11,14 @@
   <meta property="og:image" content="img/fig_6-16.png" />
   <meta property="og:locale" content="ko_KR" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="img/fig_6-16.png" />
   <link rel="stylesheet" href="styles.css" />
   <script src="app.js" defer></script>
 </head>
-<body>
+<body class="liquid-mode-tinted">
   <a class="skip-link" href="#main-content">본문으로 바로 이동</a>
 
-  <header class="topbar">
+  <header class="topbar glass-surface glass-surface-toolbar">
     <div class="shell topbar-inner">
       <a class="brand" href="#top">Pen-Testing Portfolio</a>
       <nav aria-label="주요 섹션">
@@ -48,9 +49,9 @@
             <li>결과 전달: 핵심 증빙 -> Findings -> 최종 보고서 PDF</li>
           </ul>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="Pen_Testing.pdf" target="_blank" rel="noopener noreferrer">최종 보고서 PDF 열기</a>
-            <a class="btn btn-ghost" href="Pen_Testing.pdf" download>최종 보고서 다운로드</a>
-            <a class="btn btn-link" href="#evidence">핵심 증빙 바로 보기</a>
+            <a class="btn btn-primary glass-control glass-control-primary" href="Pen_Testing.pdf" target="_blank" rel="noopener noreferrer">최종 보고서 PDF 열기</a>
+            <a class="btn btn-ghost glass-control" href="Pen_Testing.pdf" download>최종 보고서 다운로드</a>
+            <a class="btn btn-link glass-control" href="#evidence">핵심 증빙 바로 보기</a>
           </div>
         </div>
 
@@ -64,7 +65,7 @@
             <iframe id="paper-viewer" title="Pen_Testing 최종 보고서 PDF 뷰어" src="Pen_Testing.pdf#view=FitH" loading="eager"></iframe>
           </div>
           <div class="paper-actions">
-            <button id="toggle-viewer-btn" class="btn btn-link" type="button" aria-pressed="false" aria-controls="paper-viewer-wrap">미리보기 확대</button>
+            <button id="toggle-viewer-btn" class="btn btn-link glass-control" type="button" aria-pressed="false" aria-controls="paper-viewer-wrap">미리보기 확대</button>
           </div>
         </section>
 
